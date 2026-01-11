@@ -521,8 +521,11 @@ export const QuestScalarFieldEnum = {
   id: 'id',
   title: 'title',
   description: 'description',
-  difficult: 'difficult',
-  stack: 'stack',
+  difficulty: 'difficulty',
+  duration: 'duration',
+  tags: 'tags',
+  details: 'details',
+  requirements: 'requirements',
   createdAt: 'createdAt'
 } as const
 

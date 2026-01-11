@@ -5,9 +5,12 @@ import {
 	HeadContent,
 	Outlet,
 	Scripts,
+	useLocation,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { NuqsAdapter } from "nuqs/adapters/tanstack-router";
+import { CrtOverlay } from "@/components/ui/8bit/crt-overlay";
+import { RetroParticles } from "@/components/ui/8bit/retro-particles";
 import Header from "../components/Header";
 import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
 import appCss from "../styles.css?url";
@@ -29,38 +32,25 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 			{
 				title: "TanStack Start Starter",
 			},
-			{
-				name: "description",
-				content: "8-bit Project Ideas",
-			},
 		],
 		links: [
 			{
 				rel: "stylesheet",
 				href: appCss,
 			},
-			{
-				rel: "preconnect",
-				href: "https://fonts.googleapis.com",
-			},
-			{
-				rel: "preconnect",
-				href: "https://fonts.gstatic.com",
-				crossOrigin: "anonymous",
-			},
-			{
-				href: "https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap",
-				rel: "stylesheet",
-			},
 		],
 	}),
-	component: () => (
-		<>
+	component: () => {
+		// eslint-disable-next-line react-hooks/rules-of-hooks
+		const location = useLocation();
+		return (
 			<NuqsAdapter>
-				<Outlet />
+				<div key={location.pathname} className="retro-page-transition">
+					<Outlet />
+				</div>
 			</NuqsAdapter>
-		</>
-	),
+		);
+	},
 
 	shellComponent: RootDocument,
 });
@@ -72,7 +62,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 				<HeadContent />
 			</head>
 			<body className="dark">
-				{/* <Header /> */}
+				<CrtOverlay />
+				<RetroParticles />
+				<Header />
 				{children}
 				<TanStackDevtools
 					config={{

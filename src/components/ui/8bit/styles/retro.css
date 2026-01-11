@@ -14,3 +14,83 @@
   image-rendering: pixelated;
   image-rendering: crisp-edges;
 }
+
+/* 8bit Background Pattern */
+.retro-bg {
+  background-color: var(--background);
+  background-image:
+    linear-gradient(45deg, var(--muted) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--muted) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--muted) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--muted) 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+/* Animations */
+@keyframes slide-up-retro {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-retro-slide-up {
+  animation: slide-up-retro 0.5s steps(5) forwards;
+}
+
+/* Hover Effects */
+.retro-hover-effect {
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.retro-hover-effect:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+}
+
+.retro-hover-effect:active {
+  transform: translate(0px, 0px);
+  box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
+}
+
+/* Staggered Animations */
+.retro-stagger-children > * {
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slide-up-retro 0.5s steps(5) forwards;
+}
+
+.retro-stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.retro-stagger-children > *:nth-child(2) { animation-delay: 0.15s; }
+.retro-stagger-children > *:nth-child(3) { animation-delay: 0.2s; }
+.retro-stagger-children > *:nth-child(4) { animation-delay: 0.25s; }
+.retro-stagger-children > *:nth-child(5) { animation-delay: 0.3s; }
+.retro-stagger-children > *:nth-child(6) { animation-delay: 0.35s; }
+.retro-stagger-children > *:nth-child(7) { animation-delay: 0.4s; }
+.retro-stagger-children > *:nth-child(8) { animation-delay: 0.45s; }
+.retro-stagger-children > *:nth-child(9) { animation-delay: 0.50s; }
+.retro-stagger-children > *:nth-child(10) { animation-delay: 0.55s; }
+.retro-stagger-children > *:nth-child(11) { animation-delay: 0.60s; }
+.retro-stagger-children > *:nth-child(12) { animation-delay: 0.65s; }
+
+/* Page Transition */
+@keyframes retro-page-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.retro-page-transition {
+  /* Use steps(4) for that jagged, low-fps retro feel */
+  animation: retro-page-enter 0.4s steps(4) forwards;
+}

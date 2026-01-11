@@ -9,9 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as QuestsCreateRouteImport } from './routes/quests-create'
+import { Route as QuestsRouteImport } from './routes/quests'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as QuestIdRouteImport } from './routes/quest.$id'
 
+const QuestsCreateRoute = QuestsCreateRouteImport.update({
+  id: '/quests-create',
+  path: '/quests-create',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuestsRoute = QuestsRouteImport.update({
+  id: '/quests',
+  path: '/quests',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -25,32 +37,54 @@ const QuestIdRoute = QuestIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/quests': typeof QuestsRoute
+  '/quests-create': typeof QuestsCreateRoute
   '/quest/$id': typeof QuestIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/quests': typeof QuestsRoute
+  '/quests-create': typeof QuestsCreateRoute
   '/quest/$id': typeof QuestIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/quests': typeof QuestsRoute
+  '/quests-create': typeof QuestsCreateRoute
   '/quest/$id': typeof QuestIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/quest/$id'
+  fullPaths: '/' | '/quests' | '/quests-create' | '/quest/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/quest/$id'
-  id: '__root__' | '/' | '/quest/$id'
+  to: '/' | '/quests' | '/quests-create' | '/quest/$id'
+  id: '__root__' | '/' | '/quests' | '/quests-create' | '/quest/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  QuestsRoute: typeof QuestsRoute
+  QuestsCreateRoute: typeof QuestsCreateRoute
   QuestIdRoute: typeof QuestIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/quests-create': {
+      id: '/quests-create'
+      path: '/quests-create'
+      fullPath: '/quests-create'
+      preLoaderRoute: typeof QuestsCreateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quests': {
+      id: '/quests'
+      path: '/quests'
+      fullPath: '/quests'
+      preLoaderRoute: typeof QuestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -70,6 +104,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  QuestsRoute: QuestsRoute,
+  QuestsCreateRoute: QuestsCreateRoute,
   QuestIdRoute: QuestIdRoute,
 }
 export const routeTree = rootRouteImport

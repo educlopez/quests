@@ -11,45 +11,36 @@ import {
 	CardTitle,
 } from "@/components/ui/8bit/card";
 import { Separator } from "@/components/ui/8bit/separator";
+import type { Quest } from "@/generated/prisma/client";
+import { getQuestById } from "@/utils/quests.functions";
 
-export const Route = createFileRoute("/quest/$id")({ component: QuestDetail });
+export const Route = createFileRoute("/quest/$id")({
+	component: QuestDetail,
+	loader: async ({ params }) => await getQuestById({ data: { id: params.id } }),
+});
 
 function QuestDetail() {
-	const { id } = Route.useParams();
+	const quest = Route.useLoaderData() as Quest | null;
 
-	// TODO: fetch quest data by id
-	const quest = {
-		id,
-		title: "Pixel Art Editor",
-		description:
-			"Create retro-style pixel art with layers, animation support and export to PNG/GIF.",
-		difficulty: "easy" as const,
-		duration: "~2 weeks",
-		tags: ["Canvas API", "React", "TypeScript"],
-		details: `Build a browser-based pixel art editor with the following features:
-
-• Drawing tools: pencil, eraser, fill bucket, color picker
-• Layer system with opacity and blend modes
-• Animation timeline for creating sprite animations
-• Export to PNG, GIF, and custom format
-• Undo/redo history
-• Keyboard shortcuts for common actions`,
-		requirements: [
-			"Understanding of HTML Canvas API",
-			"Basic React knowledge",
-			"Familiarity with state management",
-		],
-	};
-
-	const levelColor = {
-		easy: "border-green-500 bg-green-500",
-		medium: "border-yellow-500 bg-yellow-500",
-		difficult: "border-red-500 bg-red-500",
-	};
+	if (!quest) {
+		return (
+			<main className="px-6.5 py-10 max-w-3xl mx-auto">
+				<p className="text-center text-muted-foreground">Quest not found.</p>
+				<div className="text-center mt-6">
+					<Link to="/quests">
+						<Button variant="outline" size="sm">
+							<ArrowLeft />
+							Back to Quests
+						</Button>
+					</Link>
+				</div>
+			</main>
+		);
+	}
 
 	return (
 		<main className="px-6.5 py-10 max-w-3xl mx-auto">
-			<Link to="/" className="inline-block mb-6">
+			<Link to="/quests" className="inline-block mb-6">
 				<Button variant="outline" size="sm">
 					<ArrowLeft />
 					Back to Quests
@@ -59,7 +50,9 @@ function QuestDetail() {
 			<Card>
 				<CardHeader>
 					<div className="flex items-center justify-between gap-4">
-						<DifficultBadge />
+						<DifficultBadge
+							level={quest.difficulty as "easy" | "medium" | "hard"}
+						/>
 						<span className="text-sm text-muted-foreground">
 							{quest.duration}
 						</span>

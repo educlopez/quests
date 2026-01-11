@@ -1,15 +1,20 @@
-import { PrismaClient } from "../src/generated/prisma/client.js";
-import { PrismaPg } from "@prisma/adapter-pg";
+export type Difficulty = "easy" | "medium" | "hard";
 
-const adapter = new PrismaPg({
-	connectionString: process.env.DATABASE_URL!,
-});
+export type Quest = {
+	id: string;
+	title: string;
+	description: string;
+	difficulty: Difficulty;
+	duration: string;
+	tags: string[];
+	details: string;
+	requirements: string[];
+};
 
-const prisma = new PrismaClient({ adapter });
-
-const quests = [
+export const quests: Quest[] = [
 	// === EASY ===
 	{
+		id: "1",
 		title: "Commit Message Roaster",
 		description:
 			"Analyze git commits and roast bad commit messages with witty comebacks.",
@@ -31,6 +36,7 @@ const quests = [
 		],
 	},
 	{
+		id: "2",
 		title: "Fake Startup Generator",
 		description:
 			"Generate ridiculous startup ideas with names, pitches, and fake valuations.",
@@ -52,6 +58,7 @@ const quests = [
 		],
 	},
 	{
+		id: "3",
 		title: "Keyboard Sounds Customizer",
 		description:
 			"Turn your typing into a mechanical keyboard, typewriter, or lightsaber.",
@@ -73,6 +80,7 @@ const quests = [
 		],
 	},
 	{
+		id: "4",
 		title: "CSS Battle Trainer",
 		description:
 			"Practice recreating designs with CSS and get scored on accuracy.",
@@ -94,8 +102,10 @@ const quests = [
 		],
 	},
 	{
+		id: "5",
 		title: "Meeting Bingo",
-		description: "Track corporate buzzwords during meetings and win bingo.",
+		description:
+			"Track corporate buzzwords during meetings and win bingo.",
 		difficulty: "easy",
 		duration: "Weekend",
 		tags: ["React", "PWA", "Confetti"],
@@ -107,9 +117,14 @@ const quests = [
 • Celebration animation on bingo
 • Statistics: worst offenders, average bingo time
 • Custom word lists for your company`,
-		requirements: ["Grid layout", "Touch events", "Animation libraries"],
+		requirements: [
+			"Grid layout",
+			"Touch events",
+			"Animation libraries",
+		],
 	},
 	{
+		id: "6",
 		title: "Spotify Wrapped Faker",
 		description:
 			"Generate fake Spotify Wrapped for any music taste you want to pretend to have.",
@@ -131,6 +146,7 @@ const quests = [
 		],
 	},
 	{
+		id: "7",
 		title: "Excuse Generator for Developers",
 		description:
 			"Technical excuses for missed deadlines with fake stack traces.",
@@ -154,6 +170,7 @@ const quests = [
 
 	// === MEDIUM ===
 	{
+		id: "8",
 		title: "Localhost Radio Station",
 		description:
 			"Turn your development environment into a synthwave radio with coding sounds.",
@@ -175,8 +192,10 @@ const quests = [
 		],
 	},
 	{
+		id: "9",
 		title: "npm Package Roast",
-		description: "Analyze a package.json and roast the dependency choices.",
+		description:
+			"Analyze a package.json and roast the dependency choices.",
 		difficulty: "medium",
 		duration: "~2 Weeks",
 		tags: ["Node.js", "npm Registry API", "React"],
@@ -195,6 +214,7 @@ const quests = [
 		],
 	},
 	{
+		id: "10",
 		title: "Time Zone Friendship Tester",
 		description:
 			"Visualize overlap between your schedule and friends across time zones.",
@@ -216,6 +236,7 @@ const quests = [
 		],
 	},
 	{
+		id: "11",
 		title: "Fake Data Artisan",
 		description:
 			"Generate realistic fake data that tells a story, not random garbage.",
@@ -237,6 +258,7 @@ const quests = [
 		],
 	},
 	{
+		id: "12",
 		title: "Portfolio Chaos Mode",
 		description:
 			"Add a hidden konami code to your portfolio that breaks everything hilariously.",
@@ -258,6 +280,7 @@ const quests = [
 		],
 	},
 	{
+		id: "13",
 		title: "Regex Escape Room",
 		description:
 			"Escape rooms where each puzzle requires writing the correct regex.",
@@ -279,6 +302,7 @@ const quests = [
 		],
 	},
 	{
+		id: "14",
 		title: "Pull Request Roulette",
 		description:
 			"Randomly assign yourself to open source PRs for forced learning.",
@@ -300,8 +324,10 @@ const quests = [
 		],
 	},
 	{
+		id: "15",
 		title: "Variable Name Therapist",
-		description: "Paste your code and get therapy for your naming choices.",
+		description:
+			"Paste your code and get therapy for your naming choices.",
 		difficulty: "medium",
 		duration: "~2 Weeks",
 		tags: ["React", "AST Parsing", "OpenAI API"],
@@ -322,6 +348,7 @@ const quests = [
 
 	// === HARD ===
 	{
+		id: "16",
 		title: "Vibe-Based Music Player",
 		description:
 			"Music player that reads your webcam and plays songs matching your mood.",
@@ -344,8 +371,10 @@ const quests = [
 		],
 	},
 	{
+		id: "17",
 		title: "Git Archaeology",
-		description: "Visualize repository history as an archaeological dig site.",
+		description:
+			"Visualize repository history as an archaeological dig site.",
 		difficulty: "hard",
 		duration: "1+ Month",
 		tags: ["React", "Three.js", "Git", "D3.js"],
@@ -365,6 +394,7 @@ const quests = [
 		],
 	},
 	{
+		id: "18",
 		title: "Type Racer for Vim",
 		description:
 			"Competitive typing game but you edit code using Vim motions.",
@@ -387,6 +417,7 @@ const quests = [
 		],
 	},
 	{
+		id: "19",
 		title: "404 Game Collection",
 		description:
 			"Turn every 404 page into a playable mini-game that earns rewards.",
@@ -409,8 +440,10 @@ const quests = [
 		],
 	},
 	{
+		id: "20",
 		title: "Merge Conflict Visualizer",
-		description: "Turn git merge conflicts into a visual territory war game.",
+		description:
+			"Turn git merge conflicts into a visual territory war game.",
 		difficulty: "hard",
 		duration: "1+ Month",
 		tags: ["React", "Pixi.js", "Git", "WebSocket"],
@@ -431,25 +464,16 @@ const quests = [
 	},
 ];
 
-async function main() {
-	console.log("🌱 Seeding database with quests...");
+export const getQuestById = (id: string): Quest | undefined => {
+	return quests.find((quest) => quest.id === id);
+};
 
-	await prisma.quest.deleteMany();
+export const getQuestsByDifficulty = (difficulty: Difficulty): Quest[] => {
+	return quests.filter((quest) => quest.difficulty === difficulty);
+};
 
-	for (const quest of quests) {
-		await prisma.quest.create({
-			data: quest,
-		});
-	}
-
-	console.log(`✅ Created ${quests.length} quests`);
-}
-
-main()
-	.catch((e) => {
-		console.error("❌ Error seeding database:", e);
-		process.exit(1);
-	})
-	.finally(async () => {
-		await prisma.$disconnect();
-	});
+export const getQuestsByTag = (tag: string): Quest[] => {
+	return quests.filter((quest) =>
+		quest.tags.some((t) => t.toLowerCase().includes(tag.toLowerCase())),
+	);
+};

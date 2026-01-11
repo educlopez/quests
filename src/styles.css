@@ -4,9 +4,90 @@
 
 @custom-variant dark (&:is(.dark *));
 
+body {
+  @apply m-0;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+:root {
+  --radius: 0rem;
+  --primary: oklch(0.7 0.25 320);
+  --primary-foreground: oklch(0.1 0.05 320);
+  --background: oklch(0.98 0.01 280);
+  --foreground: oklch(0.1 0.05 280);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.1 0.05 280);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.1 0.05 280);
+  --secondary: oklch(0.6 0.2 220);
+  --secondary-foreground: oklch(0.1 0.05 220);
+  --muted: oklch(0.95 0.02 280);
+  --muted-foreground: oklch(0.4 0.1 280);
+  --accent: oklch(0.8 0.25 60);
+  --accent-foreground: oklch(0.1 0.05 60);
+  --destructive: oklch(0.7 0.3 20);
+  --border: oklch(0.7 0.25 320);
+  --input: oklch(0.95 0.02 280);
+  --ring: oklch(0.7 0.25 320);
+  --chart-1: oklch(0.7 0.25 320);
+  --chart-2: oklch(0.6 0.2 220);
+  --chart-3: oklch(0.8 0.25 60);
+  --chart-4: oklch(0.7 0.3 20);
+  --chart-5: oklch(0.6 0.25 140);
+  --sidebar: oklch(0.96 0.01 280);
+  --sidebar-foreground: oklch(0.1 0.05 280);
+  --sidebar-primary: oklch(0.7 0.25 320);
+  --sidebar-primary-foreground: oklch(0.1 0.05 320);
+  --sidebar-accent: oklch(0.6 0.2 220);
+  --sidebar-accent-foreground: oklch(0.1 0.05 220);
+  --sidebar-border: oklch(0.7 0.25 320);
+  --sidebar-ring: oklch(0.7 0.25 320);
+}
+
+.dark {
+  --primary: oklch(0.8 0.3 320);
+  --primary-foreground: oklch(0.05 0.02 320);
+  --background: oklch(0.02 0.01 280);
+  --foreground: oklch(0.98 0.01 280);
+  --card: oklch(0.05 0.02 280);
+  --card-foreground: oklch(0.98 0.01 280);
+  --popover: oklch(0.05 0.02 280);
+  --popover-foreground: oklch(0.98 0.01 280);
+  --secondary: oklch(0.7 0.25 220);
+  --secondary-foreground: oklch(0.05 0.02 220);
+  --muted: oklch(0.1 0.03 280);
+  --muted-foreground: oklch(0.8 0.1 280);
+  --accent: oklch(0.9 0.3 60);
+  --accent-foreground: oklch(0.7 0.25 220);
+  --destructive: oklch(0.8 0.35 20);
+  --border: oklch(0.8 0.3 320);
+  --input: oklch(0.1 0.03 280);
+  --ring: oklch(0.6 0.25 320);
+  --chart-1: oklch(0.8 0.3 320);
+  --chart-2: oklch(0.7 0.25 220);
+  --chart-3: oklch(0.9 0.3 60);
+  --chart-4: oklch(0.8 0.35 20);
+  --chart-5: oklch(0.7 0.3 140);
+  --sidebar: oklch(0.03 0.01 280);
+  --sidebar-foreground: oklch(0.98 0.01 280);
+  --sidebar-primary: oklch(0.8 0.3 320);
+  --sidebar-primary-foreground: oklch(0.05 0.02 320);
+  --sidebar-accent: oklch(0.7 0.25 220);
+  --sidebar-accent-foreground: oklch(0.05 0.02 220);
+  --sidebar-border: oklch(0.8 0.3 320);
+  --sidebar-ring: oklch(0.8 0.3 320);
+}
+
 @theme inline {
-  --font-pixel: "Press Start 2P", cursive;
-  
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -45,91 +126,17 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-:root {
-  --radius: 0rem;
-  /* Retro Palette */
-  --primary: #FF0055; /* Neon Red */
-  --primary-foreground: #FFFFFF;
-  --background: #2D1B2E; /* Dark Purple */
-  --foreground: #FFF0F5; /* Light Pinkish White */
-  --card: #57007F; /* Deep Purple */
-  --card-foreground: #FFFFFF;
-  --popover: #57007F;
-  --popover-foreground: #FFFFFF;
-  --secondary: #00E5FF; /* Cyan */
-  --secondary-foreground: #000000;
-  --muted: #4A2B4D;
-  --muted-foreground: #D8BFD8;
-  --accent: #FFD700; /* Gold */
-  --accent-foreground: #000000;
-  --destructive: #FF4500;
-  --destructive-foreground: #FFFFFF;
-  --border: #FFFFFF; /* White borders for crisp pixel look */
-  --input: #4A2B4D;
-  --ring: #FF0055;
-  --chart-1: #FF0055;
-  --chart-2: #00E5FF;
-  --chart-3: #FFD700;
-  --chart-4: #00FF00;
-  --chart-5: #FF00FF;
-  --sidebar: #2D1B2E;
-  --sidebar-foreground: #FFF0F5;
-  --sidebar-primary: #FF0055;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #57007F;
-  --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: #FFFFFF;
-  --sidebar-ring: #FF0055;
-}
-
-body {
-  @apply m-0 bg-background text-foreground;
-  font-family: var(--font-pixel), monospace;
-  -webkit-font-smoothing: none;
-  -moz-osx-font-smoothing: none;
-  image-rendering: pixelated;
-  /* Retro grid background pattern */
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
-/* Pixel Border Utility */
-.pixel-border {
-  box-shadow: 
-    -4px 0 0 0 var(--border),
-    4px 0 0 0 var(--border),
-    0 -4px 0 0 var(--border),
-    0 4px 0 0 var(--border);
-  margin: 4px;
-}
-
-.pixel-border-sm {
-  box-shadow: 
-    -2px 0 0 0 var(--border),
-    2px 0 0 0 var(--border),
-    0 -2px 0 0 var(--border),
-    0 2px 0 0 var(--border);
-  margin: 2px;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 12px;
-  background: var(--background);
-}
-::-webkit-scrollbar-track {
-  border-left: 2px solid var(--border);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border: 2px solid var(--border);
-  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.5);
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    outline: none;
+  }
+  *::-webkit-scrollbar {
+    display: none;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }

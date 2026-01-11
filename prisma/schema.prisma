@@ -8,12 +8,15 @@ datasource db {
 }
 
 model Quest {
-  id          String   @id @default(uuid())
-  title       String
-  description String
-  difficult   String
-  stack       String
-  createdAt   DateTime @default(now())
+  id           String   @id @default(uuid())
+  title        String
+  description  String
+  difficulty   String
+  duration     String
+  tags         String[]
+  details      String
+  requirements String[]
+  createdAt    DateTime @default(now())
 
   @@map("quests")
 }

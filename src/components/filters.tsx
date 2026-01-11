@@ -1,5 +1,5 @@
 import { ChevronDown, Filter, RotateCcw } from "lucide-react";
-import { parseAsArrayOf, parseAsString, useQueryState } from "nuqs";
+import { useQueryState } from "nuqs";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/8bit/button";
 import {
@@ -19,17 +19,12 @@ import {
 export const Filters: React.FC = () => {
 	const [difficulty, setDifficulty] = useQueryState("difficulty");
 	const [duration, setDuration] = useQueryState("duration");
-	const [tech, setTech] = useQueryState("tech", parseAsArrayOf(parseAsString));
-	const [sort, setSort] = useQueryState("sort");
 
-	const hasFilters =
-		difficulty || duration || (tech && tech.length > 0) || sort;
+	const hasFilters = difficulty || duration;
 
 	const resetFilters = () => {
 		setDifficulty(null);
 		setDuration(null);
-		setTech(null);
-		setSort(null);
 	};
 
 	return (
@@ -42,8 +37,6 @@ export const Filters: React.FC = () => {
 			<div className="flex flex-wrap items-center gap-4">
 				<DifficultySelect value={difficulty} onChange={setDifficulty} />
 				<DurationSelect value={duration} onChange={setDuration} />
-				<TechMultiSelect value={tech ?? []} onChange={setTech} />
-				<SortSelect value={sort} onChange={setSort} />
 
 				{hasFilters && (
 					<Button variant="ghost" size="sm" onClick={resetFilters}>

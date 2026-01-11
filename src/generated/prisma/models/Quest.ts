@@ -28,8 +28,9 @@ export type QuestMinAggregateOutputType = {
   id: string | null
   title: string | null
   description: string | null
-  difficult: string | null
-  stack: string | null
+  difficulty: string | null
+  duration: string | null
+  details: string | null
   createdAt: Date | null
 }
 
@@ -37,8 +38,9 @@ export type QuestMaxAggregateOutputType = {
   id: string | null
   title: string | null
   description: string | null
-  difficult: string | null
-  stack: string | null
+  difficulty: string | null
+  duration: string | null
+  details: string | null
   createdAt: Date | null
 }
 
@@ -46,8 +48,11 @@ export type QuestCountAggregateOutputType = {
   id: number
   title: number
   description: number
-  difficult: number
-  stack: number
+  difficulty: number
+  duration: number
+  tags: number
+  details: number
+  requirements: number
   createdAt: number
   _all: number
 }
@@ -57,8 +62,9 @@ export type QuestMinAggregateInputType = {
   id?: true
   title?: true
   description?: true
-  difficult?: true
-  stack?: true
+  difficulty?: true
+  duration?: true
+  details?: true
   createdAt?: true
 }
 
@@ -66,8 +72,9 @@ export type QuestMaxAggregateInputType = {
   id?: true
   title?: true
   description?: true
-  difficult?: true
-  stack?: true
+  difficulty?: true
+  duration?: true
+  details?: true
   createdAt?: true
 }
 
@@ -75,8 +82,11 @@ export type QuestCountAggregateInputType = {
   id?: true
   title?: true
   description?: true
-  difficult?: true
-  stack?: true
+  difficulty?: true
+  duration?: true
+  tags?: true
+  details?: true
+  requirements?: true
   createdAt?: true
   _all?: true
 }
@@ -157,8 +167,11 @@ export type QuestGroupByOutputType = {
   id: string
   title: string
   description: string
-  difficult: string
-  stack: string
+  difficulty: string
+  duration: string
+  tags: string[]
+  details: string
+  requirements: string[]
   createdAt: Date
   _count: QuestCountAggregateOutputType | null
   _min: QuestMinAggregateOutputType | null
@@ -187,8 +200,11 @@ export type QuestWhereInput = {
   id?: Prisma.StringFilter<"Quest"> | string
   title?: Prisma.StringFilter<"Quest"> | string
   description?: Prisma.StringFilter<"Quest"> | string
-  difficult?: Prisma.StringFilter<"Quest"> | string
-  stack?: Prisma.StringFilter<"Quest"> | string
+  difficulty?: Prisma.StringFilter<"Quest"> | string
+  duration?: Prisma.StringFilter<"Quest"> | string
+  tags?: Prisma.StringNullableListFilter<"Quest">
+  details?: Prisma.StringFilter<"Quest"> | string
+  requirements?: Prisma.StringNullableListFilter<"Quest">
   createdAt?: Prisma.DateTimeFilter<"Quest"> | Date | string
 }
 
@@ -196,8 +212,11 @@ export type QuestOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  difficult?: Prisma.SortOrder
-  stack?: Prisma.SortOrder
+  difficulty?: Prisma.SortOrder
+  duration?: Prisma.SortOrder
+  tags?: Prisma.SortOrder
+  details?: Prisma.SortOrder
+  requirements?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -208,8 +227,11 @@ export type QuestWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.QuestWhereInput | Prisma.QuestWhereInput[]
   title?: Prisma.StringFilter<"Quest"> | string
   description?: Prisma.StringFilter<"Quest"> | string
-  difficult?: Prisma.StringFilter<"Quest"> | string
-  stack?: Prisma.StringFilter<"Quest"> | string
+  difficulty?: Prisma.StringFilter<"Quest"> | string
+  duration?: Prisma.StringFilter<"Quest"> | string
+  tags?: Prisma.StringNullableListFilter<"Quest">
+  details?: Prisma.StringFilter<"Quest"> | string
+  requirements?: Prisma.StringNullableListFilter<"Quest">
   createdAt?: Prisma.DateTimeFilter<"Quest"> | Date | string
 }, "id">
 
@@ -217,8 +239,11 @@ export type QuestOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  difficult?: Prisma.SortOrder
-  stack?: Prisma.SortOrder
+  difficulty?: Prisma.SortOrder
+  duration?: Prisma.SortOrder
+  tags?: Prisma.SortOrder
+  details?: Prisma.SortOrder
+  requirements?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.QuestCountOrderByAggregateInput
   _max?: Prisma.QuestMaxOrderByAggregateInput
@@ -232,8 +257,11 @@ export type QuestScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Quest"> | string
   title?: Prisma.StringWithAggregatesFilter<"Quest"> | string
   description?: Prisma.StringWithAggregatesFilter<"Quest"> | string
-  difficult?: Prisma.StringWithAggregatesFilter<"Quest"> | string
-  stack?: Prisma.StringWithAggregatesFilter<"Quest"> | string
+  difficulty?: Prisma.StringWithAggregatesFilter<"Quest"> | string
+  duration?: Prisma.StringWithAggregatesFilter<"Quest"> | string
+  tags?: Prisma.StringNullableListFilter<"Quest">
+  details?: Prisma.StringWithAggregatesFilter<"Quest"> | string
+  requirements?: Prisma.StringNullableListFilter<"Quest">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Quest"> | Date | string
 }
 
@@ -241,8 +269,11 @@ export type QuestCreateInput = {
   id?: string
   title: string
   description: string
-  difficult: string
-  stack: string
+  difficulty: string
+  duration: string
+  tags?: Prisma.QuestCreatetagsInput | string[]
+  details: string
+  requirements?: Prisma.QuestCreaterequirementsInput | string[]
   createdAt?: Date | string
 }
 
@@ -250,8 +281,11 @@ export type QuestUncheckedCreateInput = {
   id?: string
   title: string
   description: string
-  difficult: string
-  stack: string
+  difficulty: string
+  duration: string
+  tags?: Prisma.QuestCreatetagsInput | string[]
+  details: string
+  requirements?: Prisma.QuestCreaterequirementsInput | string[]
   createdAt?: Date | string
 }
 
@@ -259,8 +293,11 @@ export type QuestUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  difficult?: Prisma.StringFieldUpdateOperationsInput | string
-  stack?: Prisma.StringFieldUpdateOperationsInput | string
+  difficulty?: Prisma.StringFieldUpdateOperationsInput | string
+  duration?: Prisma.StringFieldUpdateOperationsInput | string
+  tags?: Prisma.QuestUpdatetagsInput | string[]
+  details?: Prisma.StringFieldUpdateOperationsInput | string
+  requirements?: Prisma.QuestUpdaterequirementsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -268,8 +305,11 @@ export type QuestUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  difficult?: Prisma.StringFieldUpdateOperationsInput | string
-  stack?: Prisma.StringFieldUpdateOperationsInput | string
+  difficulty?: Prisma.StringFieldUpdateOperationsInput | string
+  duration?: Prisma.StringFieldUpdateOperationsInput | string
+  tags?: Prisma.QuestUpdatetagsInput | string[]
+  details?: Prisma.StringFieldUpdateOperationsInput | string
+  requirements?: Prisma.QuestUpdaterequirementsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -277,8 +317,11 @@ export type QuestCreateManyInput = {
   id?: string
   title: string
   description: string
-  difficult: string
-  stack: string
+  difficulty: string
+  duration: string
+  tags?: Prisma.QuestCreatetagsInput | string[]
+  details: string
+  requirements?: Prisma.QuestCreaterequirementsInput | string[]
   createdAt?: Date | string
 }
 
@@ -286,8 +329,11 @@ export type QuestUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  difficult?: Prisma.StringFieldUpdateOperationsInput | string
-  stack?: Prisma.StringFieldUpdateOperationsInput | string
+  difficulty?: Prisma.StringFieldUpdateOperationsInput | string
+  duration?: Prisma.StringFieldUpdateOperationsInput | string
+  tags?: Prisma.QuestUpdatetagsInput | string[]
+  details?: Prisma.StringFieldUpdateOperationsInput | string
+  requirements?: Prisma.QuestUpdaterequirementsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -295,17 +341,31 @@ export type QuestUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  difficult?: Prisma.StringFieldUpdateOperationsInput | string
-  stack?: Prisma.StringFieldUpdateOperationsInput | string
+  difficulty?: Prisma.StringFieldUpdateOperationsInput | string
+  duration?: Prisma.StringFieldUpdateOperationsInput | string
+  tags?: Prisma.QuestUpdatetagsInput | string[]
+  details?: Prisma.StringFieldUpdateOperationsInput | string
+  requirements?: Prisma.QuestUpdaterequirementsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type StringNullableListFilter<$PrismaModel = never> = {
+  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
+  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
+  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
 }
 
 export type QuestCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  difficult?: Prisma.SortOrder
-  stack?: Prisma.SortOrder
+  difficulty?: Prisma.SortOrder
+  duration?: Prisma.SortOrder
+  tags?: Prisma.SortOrder
+  details?: Prisma.SortOrder
+  requirements?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -313,8 +373,9 @@ export type QuestMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  difficult?: Prisma.SortOrder
-  stack?: Prisma.SortOrder
+  difficulty?: Prisma.SortOrder
+  duration?: Prisma.SortOrder
+  details?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -322,13 +383,32 @@ export type QuestMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  difficult?: Prisma.SortOrder
-  stack?: Prisma.SortOrder
+  difficulty?: Prisma.SortOrder
+  duration?: Prisma.SortOrder
+  details?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+}
+
+export type QuestCreatetagsInput = {
+  set: string[]
+}
+
+export type QuestCreaterequirementsInput = {
+  set: string[]
 }
 
 export type StringFieldUpdateOperationsInput = {
   set?: string
+}
+
+export type QuestUpdatetagsInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type QuestUpdaterequirementsInput = {
+  set?: string[]
+  push?: string | string[]
 }
 
 export type DateTimeFieldUpdateOperationsInput = {
@@ -341,8 +421,11 @@ export type QuestSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   id?: boolean
   title?: boolean
   description?: boolean
-  difficult?: boolean
-  stack?: boolean
+  difficulty?: boolean
+  duration?: boolean
+  tags?: boolean
+  details?: boolean
+  requirements?: boolean
   createdAt?: boolean
 }, ExtArgs["result"]["quest"]>
 
@@ -350,8 +433,11 @@ export type QuestSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   id?: boolean
   title?: boolean
   description?: boolean
-  difficult?: boolean
-  stack?: boolean
+  difficulty?: boolean
+  duration?: boolean
+  tags?: boolean
+  details?: boolean
+  requirements?: boolean
   createdAt?: boolean
 }, ExtArgs["result"]["quest"]>
 
@@ -359,8 +445,11 @@ export type QuestSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   id?: boolean
   title?: boolean
   description?: boolean
-  difficult?: boolean
-  stack?: boolean
+  difficulty?: boolean
+  duration?: boolean
+  tags?: boolean
+  details?: boolean
+  requirements?: boolean
   createdAt?: boolean
 }, ExtArgs["result"]["quest"]>
 
@@ -368,12 +457,15 @@ export type QuestSelectScalar = {
   id?: boolean
   title?: boolean
   description?: boolean
-  difficult?: boolean
-  stack?: boolean
+  difficulty?: boolean
+  duration?: boolean
+  tags?: boolean
+  details?: boolean
+  requirements?: boolean
   createdAt?: boolean
 }
 
-export type QuestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "difficult" | "stack" | "createdAt", ExtArgs["result"]["quest"]>
+export type QuestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "difficulty" | "duration" | "tags" | "details" | "requirements" | "createdAt", ExtArgs["result"]["quest"]>
 
 export type $QuestPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Quest"
@@ -382,8 +474,11 @@ export type $QuestPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     id: string
     title: string
     description: string
-    difficult: string
-    stack: string
+    difficulty: string
+    duration: string
+    tags: string[]
+    details: string
+    requirements: string[]
     createdAt: Date
   }, ExtArgs["result"]["quest"]>
   composites: {}
@@ -811,8 +906,11 @@ export interface QuestFieldRefs {
   readonly id: Prisma.FieldRef<"Quest", 'String'>
   readonly title: Prisma.FieldRef<"Quest", 'String'>
   readonly description: Prisma.FieldRef<"Quest", 'String'>
-  readonly difficult: Prisma.FieldRef<"Quest", 'String'>
-  readonly stack: Prisma.FieldRef<"Quest", 'String'>
+  readonly difficulty: Prisma.FieldRef<"Quest", 'String'>
+  readonly duration: Prisma.FieldRef<"Quest", 'String'>
+  readonly tags: Prisma.FieldRef<"Quest", 'String[]'>
+  readonly details: Prisma.FieldRef<"Quest", 'String'>
+  readonly requirements: Prisma.FieldRef<"Quest", 'String[]'>
   readonly createdAt: Prisma.FieldRef<"Quest", 'DateTime'>
 }
     
