@@ -1,13 +1,11 @@
-import { PrismaClient } from "../src/generated/prisma/client.js";
-import { PrismaPg } from "@prisma/adapter-pg";
+import { neon } from "@neondatabase/serverless";
+import { drizzle } from "drizzle-orm/neon-http";
+import { quests } from "./schema";
 
-const adapter = new PrismaPg({
-	connectionString: process.env.DATABASE_URL!,
-});
+const sql = neon(process.env.DATABASE_URL!);
+const db = drizzle(sql);
 
-const prisma = new PrismaClient({ adapter });
-
-const quests = [
+const questsData = [
 	// === EASY ===
 	{
 		title: "Commit Message Roaster",
@@ -188,11 +186,7 @@ const quests = [
 • Suggest lighter alternatives
 • "Dependency shame" score
 • Timeline of when packages were last cool`,
-		requirements: [
-			"npm Registry API",
-			"Bundle analysis",
-			"Data visualization",
-		],
+		requirements: ["npm Registry API", "Bundle analysis", "Data visualization"],
 	},
 	{
 		title: "Time Zone Friendship Tester",
@@ -366,8 +360,7 @@ const quests = [
 	},
 	{
 		title: "Type Racer for Vim",
-		description:
-			"Competitive typing game but you edit code using Vim motions.",
+		description: "Competitive typing game but you edit code using Vim motions.",
 		difficulty: "hard",
 		duration: "1+ Month",
 		tags: ["React", "Monaco Editor", "WebSocket", "Redis"],
@@ -432,24 +425,21 @@ const quests = [
 ];
 
 async function main() {
-	console.log("🌱 Seeding database with quests...");
+	console.log("Seeding database with quests...");
 
-	await prisma.quest.deleteMany();
+	await db.delete(quests);
 
-	for (const quest of quests) {
-		await prisma.quest.create({
-			data: quest,
-		});
-	}
+	await db.insert(quests).values(questsData);
 
-	console.log(`✅ Created ${quests.length} quests`);
+	console.log(`Created ${questsData.length} quests`);
 }
 
 main()
-	.catch((e) => {
-		console.error("❌ Error seeding database:", e);
-		process.exit(1);
+	.then(() => {
+		console.log("Seeding complete");
+		process.exit(0);
 	})
-	.finally(async () => {
-		await prisma.$disconnect();
+	.catch((e) => {
+		console.error("Error seeding database:", e);
+		process.exit(1);
 	});

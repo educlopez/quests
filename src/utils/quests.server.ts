@@ -1,5 +1,6 @@
-import { prisma } from "@/db";
-import type { Prisma, Quest } from "@/generated/prisma/client";
+import { db } from "@/db";
+import { quests, type Quest, type NewQuest } from "@/db/schema";
+import { eq, desc, inArray, arrayOverlaps, and } from "drizzle-orm";
 
 export type QuestFilters = {
 	difficulty?: string | null;
@@ -16,37 +17,36 @@ const durationMap: Record<string, string[]> = {
 };
 
 export const fetchQuests = async (filters?: QuestFilters): Promise<Quest[]> => {
-	const where: Prisma.QuestWhereInput = {};
+	const conditions = [];
 
 	if (filters?.difficulty) {
-		where.difficulty = filters.difficulty;
+		conditions.push(eq(quests.difficulty, filters.difficulty));
 	}
 
 	if (filters?.duration) {
 		const validDurations = durationMap[filters.duration];
 		if (validDurations) {
-			where.duration = { in: validDurations };
+			conditions.push(inArray(quests.duration, validDurations));
 		}
 	}
 
 	if (filters?.tech && filters.tech.length > 0) {
-		where.tags = { hasSome: filters.tech };
+		conditions.push(arrayOverlaps(quests.tags, filters.tech));
 	}
 
-	return await prisma.quest.findMany({
-		where,
-		orderBy: { createdAt: "desc" },
-	});
+	return await db
+		.select()
+		.from(quests)
+		.where(conditions.length > 0 ? and(...conditions) : undefined)
+		.orderBy(desc(quests.createdAt));
 };
 
 export const fetchQuestById = async (id: string): Promise<Quest | null> => {
-	return await prisma.quest.findUnique({
-		where: { id },
-	});
+	const result = await db.select().from(quests).where(eq(quests.id, id));
+	return result[0] ?? null;
 };
 
-export const createQuest = async (data: Prisma.QuestCreateInput): Promise<Quest> => {
-	return await prisma.quest.create({
-		data,
-	});
+export const createQuest = async (data: NewQuest): Promise<Quest> => {
+	const result = await db.insert(quests).values(data).returning();
+	return result[0];
 };
