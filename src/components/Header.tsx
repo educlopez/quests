@@ -18,7 +18,7 @@ export default function Header() {
 					<Link to="/quests-create">Create Quest</Link>
 				</Button>
 				<a
-					href="https://github.com"
+					href="https://github.com/kapishdima/quests"
 					target="_blank"
 					rel="noreferrer"
 					className="flex-1"

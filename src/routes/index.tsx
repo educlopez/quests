@@ -46,7 +46,7 @@ function MainScreen() {
 							</Button>
 						</a>
 						<a
-							href="https://github.com"
+							href="https://github.com/kapishdima/quests"
 							target="_blank"
 							rel="noreferrer"
 							className="flex-1"
