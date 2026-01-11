@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.2.0",
   "engineVersion": "0c8ef2ce45c83248ab3df073180d5eda9e8be7a3",
   "activeProvider": "postgresql",
-  "inlineSchema": "generator client {\n  provider = \"prisma-client\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel Quest {\n  id           String   @id @default(uuid())\n  title        String\n  description  String\n  difficulty   String\n  duration     String\n  tags         String[]\n  details      String\n  requirements String[]\n  createdAt    DateTime @default(now())\n\n  @@map(\"quests\")\n}\n",
+  "inlineSchema": "generator client {\n  provider   = \"prisma-client\"\n  output     = \"../src/generated/prisma\"\n  engineType = \"binary\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel Quest {\n  id           String   @id @default(uuid())\n  title        String\n  description  String\n  difficulty   String\n  duration     String\n  tags         String[]\n  details      String\n  requirements String[]\n  createdAt    DateTime @default(now())\n\n  @@map(\"quests\")\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},

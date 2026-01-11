@@ -10,7 +10,6 @@ import viteTsConfigPaths from "vite-tsconfig-paths";
 const config = defineConfig({
 	plugins: [
 		devtools(),
-
 		postgres({
 			seed: {
 				type: "sql-script",
@@ -26,9 +25,6 @@ const config = defineConfig({
 		tailwindcss(),
 		tanstackStart(),
 		viteReact(),
-		nitro({
-			wasm: false,
-		}),
 	],
 });
 
