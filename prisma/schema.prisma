@@ -7,8 +7,13 @@ datasource db {
   provider = "postgresql"
 }
 
-model Todo {
-  id        Int      @id @default(autoincrement())
-  title     String
-  createdAt DateTime @default(now())
+model Quest {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  difficult   String
+  stack       String
+  createdAt   DateTime @default(now())
+
+  @@map("quests")
 }
