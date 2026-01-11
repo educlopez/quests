@@ -1,4 +1,8 @@
+![Dev Quests Hero](public/hero.png)
+
 # Dev Quests 👾
+
+
 
 **Level up your coding portfolio with retro-style challenges.**
 
