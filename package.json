@@ -16,7 +16,6 @@
     "db:migrate": "dotenv -e .env.local -- prisma migrate dev",
     "db:studio": "dotenv -e .env.local -- prisma studio",
     "db:seed": "dotenv -e .env.local -- prisma db seed"
-    
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.0",
