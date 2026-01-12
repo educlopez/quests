@@ -1,8 +1,17 @@
 import { Link, useLocation } from "@tanstack/react-router";
+import { useState } from "react";
+import MainMenu from "./ui/8bit/blocks/main-menu";
 import { Button } from "./ui/8bit/button";
+import {
+	Dialog,
+	DialogContent,
+	DialogHeader,
+	DialogTitle,
+} from "./ui/8bit/dialog";
 
 export default function Header() {
 	const location = useLocation();
+	const [menuOpen, setMenuOpen] = useState(false);
 
 	if (location.pathname === "/") {
 		return null;
@@ -13,31 +22,25 @@ export default function Header() {
 			<Link to="/" className="retro text-sm ">
 				&lt;dev_quests&gt;
 			</Link>
-			<div className="flex items-center gap-x-5">
-				<Button variant="ghost" size="sm" asChild>
-					<Link to="/quests-create">Create Quest</Link>
+
+			<Dialog open={menuOpen} onOpenChange={setMenuOpen}>
+				<Button
+					variant="outline"
+					size="sm"
+					onClick={() => setMenuOpen(true)}
+					className="retro-hover-effect"
+				>
+					Menu
 				</Button>
-				<a
-					href="https://github.com/kapishdima/quests"
-					target="_blank"
-					rel="noreferrer"
-					className="flex-1"
-				>
-					<Button variant="outline" className="w-full retro-hover-effect">
-						GitHub
-					</Button>
-				</a>
-				<a
-					href="https://x.com/kapish_dima"
-					target="_blank"
-					rel="noreferrer"
-					className="flex-1"
-				>
-					<Button variant="outline" className="w-full retro-hover-effect">
-						X (Twitter)
-					</Button>
-				</a>
-			</div>
+
+				<DialogContent className="sm:max-w-md border-y-none">
+					<DialogHeader className="sr-only">
+						<DialogTitle>Menu</DialogTitle>
+					</DialogHeader>
+
+					<MainMenu onClose={() => setMenuOpen(false)} />
+				</DialogContent>
+			</Dialog>
 		</header>
 	);
 }

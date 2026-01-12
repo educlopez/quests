@@ -1,5 +1,6 @@
 import { useForm } from "@tanstack/react-form";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { ArrowLeft } from "lucide-react";
 import { z } from "zod";
 import { Button } from "@/components/ui/8bit/button";
 import {
@@ -66,7 +67,13 @@ function CreateQuest() {
 	});
 
 	return (
-		<div className="min-h-screen retro-bg flex items-center justify-center p-4">
+		<div className="max-w-3xl min-h-screen retro-bg mx-auto p-4">
+			<Link to="/quests" className="inline-block mb-6">
+				<Button variant="outline" size="sm">
+					<ArrowLeft />
+					Back to Quests
+				</Button>
+			</Link>
 			<Card className="w-full max-w-2xl">
 				<CardHeader>
 					<CardTitle className="text-2xl md:text-3xl text-primary animate-pulse text-center">
