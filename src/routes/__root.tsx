@@ -8,6 +8,7 @@ import {
 	useLocation,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { Analytics } from "@vercel/analytics/next";
 import { NuqsAdapter } from "nuqs/adapters/tanstack-router";
 import { CrtOverlay } from "@/components/ui/8bit/crt-overlay";
 import { RetroParticles } from "@/components/ui/8bit/retro-particles";
@@ -78,7 +79,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 						TanStackQueryDevtools,
 					]}
 				/>
+
 				<Scripts />
+				<Analytics />
 			</body>
 		</html>
 	);
