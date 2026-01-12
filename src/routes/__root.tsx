@@ -67,18 +67,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 				<RetroParticles />
 				<Header />
 				{children}
-				<TanStackDevtools
-					config={{
-						position: "bottom-right",
-					}}
-					plugins={[
-						{
-							name: "Tanstack Router",
-							render: <TanStackRouterDevtoolsPanel />,
-						},
-						TanStackQueryDevtools,
-					]}
-				/>
 
 				<Scripts />
 				<Analytics />
