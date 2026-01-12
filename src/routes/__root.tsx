@@ -1,4 +1,3 @@
-import { TanStackDevtools } from "@tanstack/react-devtools";
 import type { QueryClient } from "@tanstack/react-query";
 import {
 	createRootRouteWithContext,
@@ -7,13 +6,11 @@ import {
 	Scripts,
 	useLocation,
 } from "@tanstack/react-router";
-import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 import { NuqsAdapter } from "nuqs/adapters/tanstack-router";
 import { CrtOverlay } from "@/components/ui/8bit/crt-overlay";
 import { RetroParticles } from "@/components/ui/8bit/retro-particles";
 import Header from "../components/Header";
-import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
 import appCss from "../styles.css?url";
 
 interface MyRouterContext {
