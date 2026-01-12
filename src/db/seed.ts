@@ -422,6 +422,440 @@ const questsData = [
 			"IDE extension development",
 		],
 	},
+
+	// === NEW QUESTS ===
+
+	// EASY
+	{
+		title: "Stack Overflow Fortune Teller",
+		description:
+			"Predict your debugging future based on your recent Stack Overflow searches.",
+		difficulty: "easy",
+		duration: "Weekend",
+		tags: ["React", "Chrome Extension", "LocalStorage"],
+		details: `Build a fortune-telling browser extension:
+
+• Track Stack Overflow searches (locally)
+• Generate "prophecies" based on error patterns
+• "You will mass 3 semicolons this week"
+• Weekly debugging horoscope
+• Lucky framework of the day
+• Share your fortune as an image`,
+		requirements: [
+			"Browser extension basics",
+			"Pattern matching",
+			"Image generation",
+		],
+	},
+	{
+		title: "Localhost Postcard Generator",
+		description:
+			"Send digital postcards from your localhost to friends' localhosts.",
+		difficulty: "easy",
+		duration: "Weekend",
+		tags: ["Node.js", "Canvas", "QR Code"],
+		details: `Create shareable dev postcards:
+
+• "Wish you were here at localhost:3000"
+• Auto-generate based on your current project
+• Include fake weather (CPU temp), local time
+• QR code that links to your GitHub
+• Vintage postcard templates
+• Terminal-style ASCII art option`,
+		requirements: [
+			"Canvas image manipulation",
+			"QR code generation",
+			"System info APIs",
+		],
+	},
+	{
+		title: "Dependency Zodiac",
+		description:
+			"Determine your developer zodiac sign based on your most used npm packages.",
+		difficulty: "easy",
+		duration: "Weekend",
+		tags: ["React", "npm API", "SVG"],
+		details: `Astrology for developers:
+
+• Scan package.json history
+• Map dependencies to zodiac traits
+• "Rising sign: Express, Moon in React"
+• Compatibility checker with other devs
+• Daily dependency horoscope
+• Shareable zodiac cards`,
+		requirements: [
+			"npm package analysis",
+			"SVG manipulation",
+			"Fun algorithm design",
+		],
+	},
+	{
+		title: "404 Graveyard",
+		description:
+			"A memorial site for all the dead links and discontinued APIs you've encountered.",
+		difficulty: "easy",
+		duration: "Weekend",
+		tags: ["React", "IndexedDB", "CSS Animations"],
+		details: `Honor fallen web resources:
+
+• Browser extension to log 404s and dead APIs
+• Generate tombstones with last-seen date
+• "RIP Parse.com 2011-2017"
+• Graveyard visualization with fog effects
+• Obituary generator for deprecated packages
+• Pour one out animation`,
+		requirements: [
+			"IndexedDB storage",
+			"CSS atmospheric effects",
+			"Extension content scripts",
+		],
+	},
+	{
+		title: "README Karaoke",
+		description:
+			"Turn any README into a karaoke experience with dramatic narration.",
+		difficulty: "easy",
+		duration: "~1 Week",
+		tags: ["React", "Web Speech API", "Framer Motion"],
+		details: `Dramatic documentation reading:
+
+• Paste any README or fetch from GitHub
+• Auto-generate dramatic reading with TTS
+• Highlight text as it's being read
+• Background music matching the project type
+• Applause at the end of installation steps
+• Record and share your performances`,
+		requirements: [
+			"Web Speech API",
+			"Text synchronization",
+			"Audio mixing basics",
+		],
+	},
+	{
+		title: "Procrastination Leaderboard",
+		description:
+			"Track how long you've had browser tabs open without reading them.",
+		difficulty: "easy",
+		duration: "Weekend",
+		tags: ["Browser Extension", "React", "Charts.js"],
+		details: `Competitive tab hoarding:
+
+• Track tab age across browser sessions
+• "This MDN article has been open for 47 days"
+• Achievements: "Tab Archaeologist", "Professional Procrastinator"
+• Compare with friends
+• Shame notifications for ancient tabs
+• Hall of fame for longest-lived tabs`,
+		requirements: [
+			"Browser tab APIs",
+			"Persistent storage",
+			"Gamification mechanics",
+		],
+	},
+
+	// MEDIUM
+	{
+		title: "Code Smell Perfumery",
+		description:
+			"Analyze code and recommend actual perfumes that match its quality.",
+		difficulty: "medium",
+		duration: "~2 Weeks",
+		tags: ["React", "AST Parsing", "Puppeteer"],
+		details: `Synesthetic code analysis:
+
+• Parse code for various smell patterns
+• Map code smells to actual fragrance notes
+• "Your callback hell pairs well with tobacco and regret"
+• Generate perfume bottle labels
+• Scrape real perfume databases for matches
+• Gift recommendation for code reviewers`,
+		requirements: [
+			"Static code analysis",
+			"Web scraping",
+			"Creative mapping algorithms",
+		],
+	},
+	{
+		title: "Terminal Tamagotchi",
+		description:
+			"A pet that lives in your terminal and thrives on your git commits.",
+		difficulty: "medium",
+		duration: "~2 Weeks",
+		tags: ["Rust", "CLI", "SQLite"],
+		details: `Raise a terminal creature:
+
+• Pet health tied to coding activity
+• Feed it with commits, tests make it happy
+• Gets sad during long meetings (no typing)
+• Evolution based on languages you use
+• Can die from force pushes to main
+• ASCII art animations`,
+		requirements: [
+			"CLI application architecture",
+			"Git hooks integration",
+			"State persistence",
+		],
+	},
+	{
+		title: "Impostor Syndrome Simulator",
+		description:
+			"A game where you're a junior dev trying to survive standups without being exposed.",
+		difficulty: "medium",
+		duration: "~3 Weeks",
+		tags: ["React", "Game Engine", "TypeScript"],
+		details: `Social survival game:
+
+• Daily standup scenarios with dialogue choices
+• "What did you do yesterday?" pressure meter
+• Learn real tech terms to survive
+• Boss battles: architecture discussions
+• Unlock confidence points
+• Multiplayer mode: spot the real impostor`,
+		requirements: [
+			"Dialogue system design",
+			"Game state management",
+			"Narrative branching",
+		],
+	},
+	{
+		title: "WiFi Weather Report",
+		description:
+			"Visualize network quality as weather patterns throughout your day.",
+		difficulty: "medium",
+		duration: "~2 Weeks",
+		tags: ["Electron", "D3.js", "Network APIs"],
+		details: `Network conditions as climate:
+
+• Continuous ping monitoring
+• Sunny = low latency, stormy = packet loss
+• Historical weather maps of your connection
+• Predict "network weather" based on patterns
+• Alert when storms are coming
+• Beautiful weather widget for desktop`,
+		requirements: [
+			"Network diagnostics",
+			"Time-series visualization",
+			"Desktop widget development",
+		],
+	},
+	{
+		title: "Callback Hell Elevator",
+		description:
+			"Visualize nested callbacks as an elevator descending into the abyss.",
+		difficulty: "medium",
+		duration: "~2 Weeks",
+		tags: ["React", "Babel", "Three.js"],
+		details: `Journey through callback depths:
+
+• Paste code, watch elevator descend per nesting level
+• Each floor has themed decorations (fire at bottom)
+• Refactoring makes elevator go up
+• Side-by-side with Promise/async version
+• Achievement: "Escaped the basement"
+• Export journey as shareable video`,
+		requirements: [
+			"AST nesting analysis",
+			"3D scene management",
+			"Code transformation",
+		],
+	},
+	{
+		title: "Spaghetti Code Untangler",
+		description:
+			"A puzzle game where you physically untangle dependency graphs.",
+		difficulty: "medium",
+		duration: "~3 Weeks",
+		tags: ["React", "D3.js", "Force Simulation"],
+		details: `Interactive code cleanup:
+
+• Import real projects or generate puzzles
+• Drag nodes to untangle the graph
+• Score based on crossings eliminated
+• Learn about circular dependencies
+• Multiplayer race to untangle
+• Generate beautiful dependency art when solved`,
+		requirements: [
+			"Force-directed graph algorithms",
+			"Crossing detection",
+			"Smooth drag interactions",
+		],
+	},
+	{
+		title: "Legacy Code Museum",
+		description:
+			"An interactive museum of ancient code patterns with historical context.",
+		difficulty: "medium",
+		duration: "~2 Weeks",
+		tags: ["React", "Three.js", "MDX"],
+		details: `Walk through coding history:
+
+• 3D museum with exhibits (jQuery wing, Flash memorial)
+• Interactive code samples you can run
+• Audio tours explaining why we did things that way
+• "Touch to refactor" interactive displays
+• Gift shop with deprecated framework merch mockups
+• Contribute your own artifacts`,
+		requirements: [
+			"3D navigation",
+			"Code sandboxing",
+			"Content management",
+		],
+	},
+	{
+		title: "Rubber Duck Debugger",
+		description:
+			"Voice-activated debugging companion that asks the right questions.",
+		difficulty: "medium",
+		duration: "~2 Weeks",
+		tags: ["React", "Web Speech API", "OpenAI API"],
+		details: `Your quacking debugging partner:
+
+• Speak your problem out loud
+• Duck asks clarifying questions
+• "Have you tried console.log there?"
+• Detects frustration and offers encouragement
+• Keeps session history of solved problems
+• Different duck personalities (stern duck, supportive duck)`,
+		requirements: [
+			"Speech recognition",
+			"Conversational flow design",
+			"Context management",
+		],
+	},
+
+	// HARD
+	{
+		title: "Codebase City Builder",
+		description:
+			"Visualize your entire codebase as a living city that grows with commits.",
+		difficulty: "hard",
+		duration: "1+ Month",
+		tags: ["Three.js", "React", "Git", "WebGL"],
+		details: `Urban planning for code:
+
+• Files become buildings (size = lines of code)
+• Directories are neighborhoods
+• Commits animate construction/demolition
+• Traffic = import/export relationships
+• Pollution = code smells and complexity
+• Time-lapse city growth from git history`,
+		requirements: [
+			"Procedural 3D generation",
+			"Git history parsing",
+			"Large-scale WebGL optimization",
+			"Metric calculation algorithms",
+		],
+	},
+	{
+		title: "Distributed Whiteboard Wars",
+		description:
+			"Real-time collaborative whiteboard with territory control mechanics.",
+		difficulty: "hard",
+		duration: "1+ Month",
+		tags: ["React", "Canvas", "WebRTC", "CRDT"],
+		details: `Competitive collaboration:
+
+• Draw to claim territory on shared canvas
+• Team-based color wars
+• Undo wars: erase enemy drawings
+• Power-ups: larger brush, color bombs
+• Spectator mode with replay
+• Export timelapse of the battle`,
+		requirements: [
+			"CRDT implementation",
+			"WebRTC peer connections",
+			"Canvas optimization for real-time",
+			"Game balancing",
+		],
+	},
+	{
+		title: "API Response Orchestra",
+		description:
+			"Turn your microservices' responses into a musical composition.",
+		difficulty: "hard",
+		duration: "1+ Month",
+		tags: ["React", "Web Audio API", "WebSocket", "D3.js"],
+		details: `Sonification of infrastructure:
+
+• Each service is an instrument
+• Response time = pitch, status = rhythm
+• 200s are harmonious, 500s are dissonant
+• Real-time performance of your production traffic
+• Record and export compositions
+• Alert when the music sounds wrong`,
+		requirements: [
+			"Audio synthesis",
+			"Real-time data streaming",
+			"Musical theory implementation",
+			"Metric collection integration",
+		],
+	},
+	{
+		title: "Memory Palace IDE",
+		description:
+			"Navigate your codebase as a 3D spatial environment you can memorize.",
+		difficulty: "hard",
+		duration: "1+ Month",
+		tags: ["Three.js", "React", "Monaco Editor", "WebXR"],
+		details: `Spatial code navigation:
+
+• Codebase rendered as explorable 3D space
+• Place code snippets in memorable locations
+• VR support for full immersion
+• Bookmark locations for quick travel
+• Collaborative tours for onboarding
+• Memory training mode with code quizzes`,
+		requirements: [
+			"3D space generation from code structure",
+			"WebXR integration",
+			"Spatial audio",
+			"Code editor in 3D space",
+		],
+	},
+	{
+		title: "Blockchain of Blame",
+		description:
+			"Immutable, distributed record of who broke the build and when.",
+		difficulty: "hard",
+		duration: "1+ Month",
+		tags: ["Node.js", "libp2p", "React", "CI/CD"],
+		details: `Decentralized accountability:
+
+• P2P network between team members
+• CI failures create immutable blame records
+• Consensus required to assign blame
+• Reputation scores based on fix speed
+• Appeals process with evidence submission
+• Historical blame archaeology`,
+		requirements: [
+			"P2P networking",
+			"Consensus algorithms",
+			"CI/CD webhook integration",
+			"Cryptographic verification",
+		],
+	},
+	{
+		title: "Quantum Diff Viewer",
+		description:
+			"View all possible states of a file simultaneously until you observe one.",
+		difficulty: "hard",
+		duration: "1+ Month",
+		tags: ["React", "WebGL", "Git", "Shader Programming"],
+		details: `Superposition of code states:
+
+• Visualize file across multiple branches at once
+• Sections blur between versions until clicked
+• "Collapse the wavefunction" to choose a version
+• Probability cloud showing likely merge outcomes
+• Entangled files highlight together
+• Beautiful quantum-inspired visual effects`,
+		requirements: [
+			"Multi-branch git analysis",
+			"Custom WebGL shaders",
+			"Complex state visualization",
+			"Smooth interpolation algorithms",
+		],
+	},
 ];
 
 async function main() {
