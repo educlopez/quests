@@ -11,7 +11,7 @@ import {
 	CardTitle,
 } from "@/components/ui/8bit/card";
 import { Separator } from "@/components/ui/8bit/separator";
-import type { Quest } from "@/generated/prisma/client";
+import { playPrevSound } from "@/hooks/use-sound";
 import { getQuestById } from "@/utils/quests.functions";
 
 export const Route = createFileRoute("/quest/$id")({
@@ -20,14 +20,14 @@ export const Route = createFileRoute("/quest/$id")({
 });
 
 function QuestDetail() {
-	const quest = Route.useLoaderData() as Quest | null;
+	const quest = Route.useLoaderData();
 
 	if (!quest) {
 		return (
 			<main className="px-6.5 py-10 max-w-3xl mx-auto">
 				<p className="text-center text-muted-foreground">Quest not found.</p>
 				<div className="text-center mt-6">
-					<Link to="/quests">
+					<Link to="/quests" onClick={playPrevSound}>
 						<Button variant="outline" size="sm">
 							<ArrowLeft />
 							Back to Quests
@@ -40,7 +40,7 @@ function QuestDetail() {
 
 	return (
 		<main className="px-6.5 py-10 max-w-3xl mx-auto">
-			<Link to="/quests" className="inline-block mb-6">
+			<Link to="/quests" className="inline-block mb-6" onClick={playPrevSound}>
 				<Button variant="outline" size="sm">
 					<ArrowLeft />
 					Back to Quests

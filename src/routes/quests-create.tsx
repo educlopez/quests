@@ -3,6 +3,7 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { z } from "zod";
 import { Button } from "@/components/ui/8bit/button";
+import { playNextSound, playPrevSound } from "@/hooks/use-sound";
 import {
 	Card,
 	CardContent,
@@ -49,6 +50,7 @@ function CreateQuest() {
 		},
 
 		onSubmit: async ({ value }) => {
+			playNextSound();
 			await createQuest({
 				data: {
 					...value,
@@ -59,7 +61,7 @@ function CreateQuest() {
 					requirements: value.requirements
 						.split("\n")
 						.map((r) => r.trim())
-						.filter(Boolean), // Fixed: convert string to string[]
+						.filter(Boolean),
 				},
 			});
 			navigate({ to: "/quests" });
@@ -68,7 +70,7 @@ function CreateQuest() {
 
 	return (
 		<div className="max-w-3xl min-h-screen retro-bg mx-auto p-4">
-			<Link to="/quests" className="inline-block mb-6">
+			<Link to="/quests" className="inline-block mb-6" onClick={playPrevSound}>
 				<Button variant="outline" size="sm">
 					<ArrowLeft />
 					Back to Quests

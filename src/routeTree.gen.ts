@@ -9,11 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as QuestsCreateRouteImport } from './routes/quests-create'
 import { Route as QuestsRouteImport } from './routes/quests'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as QuestIdRouteImport } from './routes/quest.$id'
 
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const QuestsCreateRoute = QuestsCreateRouteImport.update({
   id: '/quests-create',
   path: '/quests-create',
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/quests': typeof QuestsRoute
   '/quests-create': typeof QuestsCreateRoute
+  '/settings': typeof SettingsRoute
   '/quest/$id': typeof QuestIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/quests': typeof QuestsRoute
   '/quests-create': typeof QuestsCreateRoute
+  '/settings': typeof SettingsRoute
   '/quest/$id': typeof QuestIdRoute
 }
 export interface FileRoutesById {
@@ -52,25 +60,40 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/quests': typeof QuestsRoute
   '/quests-create': typeof QuestsCreateRoute
+  '/settings': typeof SettingsRoute
   '/quest/$id': typeof QuestIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/quests' | '/quests-create' | '/quest/$id'
+  fullPaths: '/' | '/quests' | '/quests-create' | '/settings' | '/quest/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/quests' | '/quests-create' | '/quest/$id'
-  id: '__root__' | '/' | '/quests' | '/quests-create' | '/quest/$id'
+  to: '/' | '/quests' | '/quests-create' | '/settings' | '/quest/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/quests'
+    | '/quests-create'
+    | '/settings'
+    | '/quest/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   QuestsRoute: typeof QuestsRoute
   QuestsCreateRoute: typeof QuestsCreateRoute
+  SettingsRoute: typeof SettingsRoute
   QuestIdRoute: typeof QuestIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/quests-create': {
       id: '/quests-create'
       path: '/quests-create'
@@ -106,6 +129,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   QuestsRoute: QuestsRoute,
   QuestsCreateRoute: QuestsCreateRoute,
+  SettingsRoute: SettingsRoute,
   QuestIdRoute: QuestIdRoute,
 }
 export const routeTree = rootRouteImport

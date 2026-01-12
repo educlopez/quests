@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import type { Quest } from "@/generated/prisma/client";
+import { playNextSound } from "@/hooks/use-sound";
 import { DifficultBadge } from "./difficult-badge";
 import { Badge } from "./ui/8bit/badge";
 import {
@@ -22,6 +23,7 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest }) => {
 			to="/quest/$id"
 			params={{ id: quest.id }}
 			className="block hover:opacity-90 transition-opacity"
+			onClick={playNextSound}
 		>
 			<Card className="retro-hover-effect h-full">
 				<CardHeader>

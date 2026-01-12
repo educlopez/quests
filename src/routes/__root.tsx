@@ -10,6 +10,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { NuqsAdapter } from "nuqs/adapters/tanstack-router";
 import { CrtOverlay } from "@/components/ui/8bit/crt-overlay";
 import { RetroParticles } from "@/components/ui/8bit/retro-particles";
+import { useIntroMusic } from "@/hooks/use-sound";
 import Header from "../components/Header";
 import appCss from "../styles.css?url";
 
@@ -147,6 +148,11 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 	component: () => {
 		// eslint-disable-next-line react-hooks/rules-of-hooks
 		const location = useLocation();
+		const isHome = location.pathname === "/";
+
+		// eslint-disable-next-line react-hooks/rules-of-hooks
+		useIntroMusic(isHome);
+
 		return (
 			<NuqsAdapter>
 				<div key={location.pathname} className="retro-page-transition">

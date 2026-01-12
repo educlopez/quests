@@ -1,4 +1,5 @@
 import { useNavigate } from "@tanstack/react-router";
+import { playNextSound } from "@/hooks/use-sound";
 import { Button } from "@/components/ui/8bit/button";
 import {
 	Card,
@@ -20,8 +21,15 @@ export default function MainMenu({
 	const navigate = useNavigate();
 
 	const handleCreateQuest = () => {
+		playNextSound();
 		onClose?.();
 		navigate({ to: "/quests-create" });
+	};
+
+	const handleSettings = () => {
+		playNextSound();
+		onClose?.();
+		navigate({ to: "/settings" });
 	};
 
 	const handleExit = () => {
@@ -43,6 +51,10 @@ export default function MainMenu({
 				<div className="flex flex-col gap-4">
 					<Button className="w-full" onClick={handleCreateQuest}>
 						CREATE QUEST
+					</Button>
+
+					<Button variant="outline" className="w-full" onClick={handleSettings}>
+						SETTINGS
 					</Button>
 
 					<a

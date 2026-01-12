@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/8bit/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/8bit/card";
-
 import { TypewriterText } from "@/components/ui/8bit/typewriter-text";
 
 export const Route = createFileRoute("/")({ component: MainScreen });

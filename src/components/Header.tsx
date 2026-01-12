@@ -1,5 +1,6 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { useState } from "react";
+import { playNextSound } from "@/hooks/use-sound";
 import MainMenu from "./ui/8bit/blocks/main-menu";
 import { Button } from "./ui/8bit/button";
 import {
@@ -12,6 +13,11 @@ import {
 export default function Header() {
 	const location = useLocation();
 	const [menuOpen, setMenuOpen] = useState(false);
+
+	const handleOpenMenu = () => {
+		playNextSound();
+		setMenuOpen(true);
+	};
 
 	if (location.pathname === "/") {
 		return null;
@@ -27,7 +33,7 @@ export default function Header() {
 				<Button
 					variant="outline"
 					size="sm"
-					onClick={() => setMenuOpen(true)}
+					onClick={handleOpenMenu}
 					className="retro-hover-effect"
 				>
 					Menu
