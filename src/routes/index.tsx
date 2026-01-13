@@ -26,14 +26,14 @@ function MainScreen() {
 						/>
 					</div>
 				</CardHeader>
-				<CardContent className="space-y-4 flex flex-col items-center mt-6 px-4 sm:px-6 pb-6 overflow-visible">
+				<CardContent className="space-y-4 flex flex-col items-center mt-6 px-4 pb-6 overflow-visible">
 					<Link to="/quests" className="w-full">
 						<Button className="w-full text-lg h-14 retro-hover-effect">
 							START GAME
 						</Button>
 					</Link>
 
-					<div className="flex flex-col sm:flex-row gap-2 sm:gap-4 w-full">
+					<div className="flex flex-col sm:flex-row gap-2  w-full">
 						<a
 							href="https://github.com/kapishdima/quests"
 							target="_blank"
