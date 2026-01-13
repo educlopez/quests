@@ -35,29 +35,29 @@ function MainScreen() {
 
 					<div className="flex flex-col sm:flex-row gap-2  w-full">
 						<a
-							href="https://github.com/kapishdima/quests"
-							target="_blank"
-							rel="noreferrer"
-							className="w-full sm:flex-1 min-w-0"
-						>
-							<Button
-								variant="outline"
-								className="w-full retro-hover-effect text-sm sm:text-base"
-							>
-								GitHub
-							</Button>
-						</a>
-						<a
 							href="https://x.com/kapish_dima"
 							target="_blank"
 							rel="noreferrer"
-							className="w-full sm:flex-1 min-w-0"
+							className="w-full flex-1"
 						>
 							<Button
 								variant="outline"
 								className="w-full retro-hover-effect text-sm sm:text-base"
 							>
 								X (Twitter)
+							</Button>
+						</a>
+						<a
+							href="https://github.com/kapishdima/quests"
+							target="_blank"
+							rel="noreferrer"
+							className="w-full flex-1 min-w-0"
+						>
+							<Button
+								variant="outline"
+								className="w-full retro-hover-effect text-sm sm:text-base"
+							>
+								GitHub
 							</Button>
 						</a>
 					</div>
